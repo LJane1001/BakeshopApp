@@ -18,7 +18,7 @@ export class AuthenticateService {
   }
 
   getAuthStatus() {
-    return this.http.get<boolean>(this.baseUrl + '/bakeshop?isAuthenticated=' + this.isAutenticated)
+    return this.http.get<boolean>(this.baseUrl + '/authenticateuser?isAuthenticated=' + this.isAutenticated)
     .subscribe((isAuthenticated: boolean) => {
       this.isAutenticated = isAuthenticated;
     });
