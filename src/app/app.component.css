@@ -1,0 +1,11 @@
+.main{
+    text-align: center;
+    background-image: url("../assets/Images/bakeshop_background.jpg");
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+}
+
+.content{
+    height: 500px;
+}

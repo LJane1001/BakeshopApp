@@ -1,0 +1,15 @@
+.products{
+    background-color: #fff;
+    border-color:  #784212 ;
+    border-width: 1px;
+    border-radius: 1cm;
+    border-style: solid;
+    height: 600px;
+}
+.products img{
+    height: 150px;
+    width: 200px;
+}
+.bake-item{
+    margin-bottom: 3px;
+}

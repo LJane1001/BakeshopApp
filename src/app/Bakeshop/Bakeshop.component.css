@@ -1,0 +1,10 @@
+.bakeshopHeader{
+    font-family: Brush Script Std, cursive;
+    font-style: oblique;
+    font-weight: bolder;
+    color:  #784212 ;
+}
+
+.bakeshopHeader h3{
+    display: inline;
+}

@@ -1,0 +1,12 @@
+<div class="products col-lg-3" *ngFor="let products of productList">
+  <h3>{{products.categoryName}}</h3>
+  <hr>
+  <div class="bake-item" *ngFor="let productItem of products.details">
+    <img [src]="productItem.imageUrl">
+    <p>{{productItem.name}}</p>
+    <p>&#8369;{{productItem.price | number: '1.2-2'}}</p>
+    <div>
+      <button type="button" class="btn btn-info" (click)="onAddToCart(productItem)">Add to cart</button>
+    </div>
+  </div>
+</div>
