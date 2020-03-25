@@ -1,11 +1,8 @@
 import { ProductItem } from './../shared/ProductItem.model';
 import { Injectable } from '@angular/core';
 import { Product } from '../shared/Product.model';
-import { CartService } from '../Cart/cart.service';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { map } from 'rxjs/operators';
 import { ProductCategory } from '../shared/ProductCategory.enum';
+import { CartService } from '../Cart/cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -87,32 +84,15 @@ export class ProductService {
                               this.chocolateCrepe
                             ])
                           ];
-// productList: Product[] = [];
 
-  baseUrl = environment.baseUrl;
-
-  constructor(private cartService: CartService, private http: HttpClient) {}
+  constructor(private cartService: CartService) {}
 
   getProductList() {
-    this.getProductFromApi();
     return this.productList.slice();
   }
 
   addProductToCart(product: ProductItem) {
     this.cartService.addProduct(product);
-  }
-
-  getProductFromApi() {
-    return this.http.get<Product[]>(this.baseUrl + '/getproducts')
-    .pipe(map(
-      (products) => {
-        this.productList = products;
-        return products;
-      }
-    ))
-    .subscribe((productList: Product[]) => {
-      this.productList = productList;
-    });
   }
 
 }

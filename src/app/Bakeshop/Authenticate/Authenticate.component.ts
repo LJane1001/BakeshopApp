@@ -9,7 +9,7 @@ import { AuthenticateService } from './authenticate.service';
 })
 export class AuthenticateComponent implements OnInit {
 
-  isAuthenticated = false;
+  isAuthenticated: boolean;
   logButtonText = 'Login';
 
   constructor(private authService: AuthenticateService) { }
