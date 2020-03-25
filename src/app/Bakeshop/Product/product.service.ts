@@ -3,11 +3,17 @@ import { Injectable } from '@angular/core';
 import { Product } from '../shared/Product.model';
 import { ProductCategory } from '../shared/ProductCategory.enum';
 import { CartService } from '../Cart/cart.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+
+  productsChanged = new Observable<Product[]>();
 
   strawberryCake: ProductItem = new ProductItem(
     1,
@@ -66,29 +72,18 @@ export class ProductService {
     ProductCategory.Crepe
   );
 
-  productList: Product[] = [
-                            new Product(1, 'Cakes', [
-                            this.strawberryCake,
-                            this.chocolateCake
-                            ]),
-                            new Product(2, 'Donuts', [
-                              this.strawberryDonut,
-                              this.chocolateDonut
-                            ]),
-                            new Product(3, 'Cupcakes', [
-                              this.strawberryCupcake,
-                              this.chocolateCupcake
-                            ]),
-                            new Product(4, 'Crepes', [
-                              this.strawberryCrepe,
-                              this.chocolateCrepe
-                            ])
-                          ];
+  productList: Product[] = [];
 
-  constructor(private cartService: CartService) {}
+  baseUrl = environment.baseUrl;
 
-  getProductList() {
-    return this.productList.slice();
+  constructor(private cartService: CartService, private http: HttpClient) {}
+
+  getProductList(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.baseUrl + '/getproducts');;
+  }
+
+  setProducts(productList: Product[]) {
+    this.productList = productList;
   }
 
   addProductToCart(product: ProductItem) {
