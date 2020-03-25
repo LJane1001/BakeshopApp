@@ -36,4 +36,8 @@ export class CartComponent implements OnInit {
     this.cartService.clearAll();
   }
 
+  onIncrementQuantity(currentQuantity: number, productId: number){
+
+  }
+
 }

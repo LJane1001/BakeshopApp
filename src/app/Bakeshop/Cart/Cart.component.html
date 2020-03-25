@@ -25,11 +25,13 @@
               </div>
             </div>
             <div class="row cart-items" *ngFor="let cartItem of cartItems">
-              <div class="col-lg-6 item-name">
+              <div class="col-lg-5 item-name">
                 {{cartItem.productName}}
               </div>
-              <div class="col-lg-2 item-quantity">
+              <div class="col-lg-3 item-quantity">
+                <button type="button" class="btn btn-danger" data-productId="cartItem.productId">-</button>
                 {{cartItem.quantity}}
+                <button type="button" class="btn btn-success">+</button>
               </div>
               <div class="col-lg-4 item-price">
                 {{cartItem.price | number: '1.2-2'}}
